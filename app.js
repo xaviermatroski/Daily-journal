@@ -6,6 +6,8 @@
 //   allPosts.push(data);
 // });
 
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -30,7 +32,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb+srv://townclay7:PzI7r0J4VuHiwGZe@cluster0.8txx3no.mongodb.net/todo");
+const url = process.env.URL;
+mongoose.connect(url);
 
 // Post
 const postSchema = {
